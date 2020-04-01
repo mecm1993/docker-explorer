@@ -1,0 +1,24 @@
+.home {
+    width: 100%;
+
+    .container {
+        display: flex;
+        // padding: 3rem 5rem;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100vh;
+
+        .navbar {
+            padding: 0;
+        }
+
+        .content {
+            flex: 1 1;
+            padding-top: 5rem;
+        }
+
+        .footer {
+            padding: 0;
+        }
+    }
+}

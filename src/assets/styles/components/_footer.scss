@@ -1,0 +1,15 @@
+.footer {
+  width: 100%;
+  margin-top: 2rem;
+  background: #fff;
+
+  &__content > a {
+    text-decoration: none;
+  }
+
+  &__links {
+    padding: 1rem;
+    position: relative;
+    text-decoration: none;
+  }
+}
