@@ -1,6 +1,6 @@
 # DockerExplorer
 
-![Development Website](https://github.com/mecm1993/docker-explorer/workflows/Development%20Website/badge.svg)
+![Deploy Development Website](https://github.com/mecm1993/docker-explorer/workflows/Deploy%20development%20website/badge.svg)
 
 ## Getting Started
 
