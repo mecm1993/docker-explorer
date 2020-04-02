@@ -190,383 +190,794 @@ export const secondaryOptions: Record<string, Array<Command>> = {
       ],
     ),
   ],
-  // image: [
-  //   {
-  //     value: 'build',
-  //     label: 'Build an image from a Dockerfile',
-  //     usage: 'docker image build [OPTIONS] <PATH | URL>',
-  //     nb: 'Replace <PATH | URL> with path of the Dockerfile.',
-  //     options: [
-  //       {
-  //         flag: '-f, --file <string>',
-  //         message: 'Name of the Dockerfile (Default is \'PATH/Dockerfile\')',
-  //       },
-  //       {
-  //         flag: '-q, --quiet',
-  //         message: 'Suppress the build output and print image ID on success',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     value: 'history',
-  //     label: 'Show the history of an image',
-  //     usage: 'docker image history [OPTIONS] <IMAGE>',
-  //     nb: 'Replace <IMAGE> with the name of the image and tag.',
-  //     options: [
-  //       {
-  //         flag: '-H, --human',
-  //         message: 'Print sizes and dates in human readable format (default true)',
-  //       },
-  //       {
-  //         flag: '-q, --quiet',
-  //         message: 'Only show numeric IDs',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     value: 'import',
-  //     label: 'Import the contents from a tarball to create a filesystem image',
-  //     usage: 'docker image import [OPTIONS] <file|URL|- REPOSITORY[:TAG]>',
-  //     nb: 'Replace <file|URL|- REPOSITORY[:TAG]> with the name of the file.',
-  //     options: [
-  //       {
-  //         flag: '-c, --change list',
-  //         message: 'Apply Dockerfile instruction to the created image',
-  //       },
-  //       {
-  //         flag: '-m, --message <string>',
-  //         message: 'Set commit message for imported image',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     value: 'inspect',
-  //     label: 'Display detailed information on one or more images',
-  //     usage: 'docker image inspect [OPTIONS] IMAGE [IMAGE...]',
-  //     options: [
-  //       {
-  //         flag: '-f, --format string',
-  //         message: 'Format the output using the given Go template'
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     value: 'load',
-  //     label: 'Load an image from a tar archive or STDIN',
-  //     usage: 'docker image load [OPTIONS]',
-  //     options: [
-  //       {
-  //         flag: '-i, --input string',
-  //         message: 'Read from tar archive file, instead of STDIN',
-  //       },
-  //       {
-  //         flag: '-q, --quiet',
-  //         message: 'Suppress the load output',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     value: 'ls',
-  //     label: 'List images',
-  //     usage: 'docker image ls [OPTIONS] <REPOSITORY[:TAG]>',
-  //     nb: 'Replace <REPOSITORY[:TAG]> with the name.',
-  //     options: [
-  //       {
-  //         flag: '-a, --all',
-  //         message: 'Show all images (default hides intermediate images)',
-  //       },
-  //       {
-  //         flag: '-q, --quiet',
-  //         message: 'Only show numeric IDs',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     value: 'prune',
-  //     label: 'Remove unused images',
-  //     usage: 'docker image prune [OPTIONS]',
-  //     options: [
-  //       {
-  //         flag: '-a, --all',
-  //         message: 'Remove all unused images, not just dangling one',
-  //       },
-  //       {
-  //         flag: '-f, --force',
-  //         message: 'Do not prompt for confirmation',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     value: 'pull',
-  //     label: 'Pull an image or a repository from a registry',
-  //     usage: 'docker image pull [OPTIONS] <NAME[:TAG|@DIGEST]>',
-  //     nb: 'Replace <NAME[:TAG|@DIGEST]> with the name of the image.',
-  //     options: [
-  //       {
-  //         flag: '-a, --all-tags',
-  //         message: 'Download all tagged images in the repository',
-  //       },
-  //       {
-  //         flag: '-q, --quiet',
-  //         message: 'Suppress verbose output',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     value: 'push',
-  //     label: 'Push an image or a repository to a registry',
-  //     usage: 'docker image push [OPTIONS] <NAME[:TAG]>',
-  //     nb: 'Replace <NAME[:TAG] with the name of the image.',
-  //     options: [
-  //       {
-  //         flag: '--disable-content-trust',
-  //         message: 'Skip image signing (default true)',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     value: 'rm',
-  //     label: 'Remove one or more images',
-  //     usage: 'docker image rm [OPTIONS] IMAGE [IMAGE...]',
-  //     options: [
-  //       {
-  //         flag: '-f, --force',
-  //         message: 'Force removal of the image',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     value: 'save',
-  //     label: 'Save one or more images to a tar archive',
-  //     usage: 'docker image save [OPTIONS] IMAGE [IMAGE...]',
-  //     options: [
-  //       {
-  //         flag: '-o, --output string',
-  //         message: 'Write to a file, instead of STDOUT',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     value: 'tag',
-  //     label: 'Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE',
-  //     usage: 'docker image tag <SOURCE_IMAGE[:TAG]> <TARGET_IMAGE[:TAG]>',
-  //     nb: 'Replace <SOURCE_IMAGE[:TAG]> with the original image and <TARGAT_IMAGE[:TAG]> with the destination image.'
-  //   }
-  // ],
-  // network: [
-  //   {
-  //     value: 'connect',
-  //     label: 'Connect a container to a network',
-  //   },
-  //   {
-  //     value: 'create',
-  //     label: 'Create a network',
-  //   },
-  //   {
-  //     value: 'disconnect',
-  //     label: 'Disconnect a container from a network',
-  //   },
-  //   {
-  //     value: 'inspect',
-  //     label: 'Display detailed information on one or more networks',
-  //   },
-  //   {
-  //     value: 'ls',
-  //     label: 'List networks',
-  //   },
-  //   {
-  //     value: 'prune',
-  //     label: 'Remove all unused networks',
-  //   },
-  //   {
-  //     value: 'rm',
-  //     label: 'Remove one or more networks',
-  //   },
-  // ],
-  // node: [
-  //   {
-  //     value: 'demote',
-  //     label: 'Demote one or more nodes from manager in the swarm',
-  //   },
-  //   {
-  //     value: 'inspect',
-  //     label: 'Display detailed information on one or more nodes',
-  //   },
-  //   {
-  //     value: 'ls',
-  //     label: 'List nodes in the swarm',
-  //   },
-  //   {
-  //     value: 'promote',
-  //     label: 'Promote one or more nodes to manager in the swarm',
-  //   },
-  //   {
-  //     value: 'ps',
-  //     label: 'List tasks running on one or more nodes, defaults to current node',
-  //   },
-  //   {
-  //     value: 'rm',
-  //     label: 'Remove one or more nodes from the swarm',
-  //   },
-  //   {
-  //     value: 'update',
-  //     label: 'Update a node',
-  //   },
-  // ],
-  // plugin: [
-  //   {
-  //     value: 'create',
-  //     label: 'Create a plugin from a rootfs and configuration. Plugin data directory must contain config.json and rootfs directory.',
-  //   },
-  //   {
-  //     value: 'disable',
-  //     label: 'Disable a plugin',
-  //   },
-  //   {
-  //     value: 'enable',
-  //     label: 'Enable a plugin',
-  //   },
-  //   {
-  //     value: 'inspect',
-  //     label: 'Display detailed information on one or more plugins',
-  //   },
-  //   {
-  //     value: 'install',
-  //     label: 'Install a plugin',
-  //   },
-  //   {
-  //     value: 'ls',
-  //     label: 'List plugins',
-  //   },
-  //   {
-  //     value: 'push',
-  //     label: 'Push a plugin to a registry',
-  //   },
-  //   {
-  //     value: 'rm',
-  //     label: 'Remove one or more plugins',
-  //   },
-  //   {
-  //     value: 'set',
-  //     label: 'Change settings for a plugin',
-  //   },
-  //   {
-  //     value: 'upgrade',
-  //     label: 'Upgrade an existing plugin',
-  //   },
-  // ],
-  // secret: [
-  //   {
-  //     value: 'create',
-  //     label: 'Create a secret from a file or STDIN as content',
-  //   },
-  //   {
-  //     value: 'inspect',
-  //     label: 'Display detailed information on one or more secrets',
-  //   },
-  //   {
-  //     value: 'ls',
-  //     label: 'List secrets',
-  //   },
-  //   {
-  //     value: 'rm',
-  //     label: 'Remove one or more secrets',
-  //   },
-  // ],
-  // service: [
-  //   {
-  //     value: 'create',
-  //     label: 'Create a new service',
-  //   },
-  //   {
-  //     value: 'inspect',
-  //     label: 'Display detailed information on one or more services',
-  //   },
-  //   {
-  //     value: 'logs',
-  //     label: 'Fetch the logs of a service or task',
-  //   },
-  //   {
-  //     value: 'ls',
-  //     label: 'List services',
-  //   },
-  //   {
-  //     value: 'ps',
-  //     label: 'List the tasks of one or more services',
-  //   },
-  //   {
-  //     value: 'rm',
-  //     label: 'Remove one or more services',
-  //   },
-  //   {
-  //     value: 'rollback',
-  //     label: 'Revert changes to a service\'s configuration',
-  //   },
-  //   {
-  //     value: 'scale',
-  //     label: 'Scale one or multiple replicated services',
-  //   },
-  //   {
-  //     value: 'update',
-  //     label: 'Update a service',
-  //   },
-  // ],
-  // stack: [
-  //   {
-  //     value: 'deploy',
-  //     label: 'Deploy a new stack or update an existing stack',
-  //   },
-  //   {
-  //     value: 'ls',
-  //     label: 'List stacks',
-  //   },
-  //   {
-  //     value: 'ps',
-  //     label: 'List the tasks in the stack',
-  //   },
-  //   {
-  //     value: 'rm',
-  //     label: 'Remove one or more stacks',
-  //   },
-  //   {
-  //     value: 'services',
-  //     label: 'List the services in the stack',
-  //   },
-  // ],
-  // swarm: [
-  //   {
-  //     value: 'ca',
-  //     label: 'Display and rotate the root CA',
-  //   },
-  //   {
-  //     value: 'init',
-  //     label: 'Initialize a swarm',
-  //   },
-  //   {
-  //     value: 'join',
-  //     label: 'Join a swarm as a node and/or manager',
-  //   },
-  //   {
-  //     value: 'join-token',
-  //     label: 'Manage join tokens',
-  //   },
-  //   {
-  //     value: 'leave',
-  //     label: 'Leave the swarm',
-  //   },
-  //   {
-  //     value: 'unlock',
-  //     label: 'Unlock swarm',
-  //   },
-  //   {
-  //     value: 'unlock-key',
-  //     label: 'Manage the unlock key',
-  //   },
-  //   {
-  //     value: 'update',
-  //     label: 'Update the swarm',
-  //   },
-  // ],
+  image: [
+    new Command(
+      'build',
+      'Build an image from a Dockerfile',
+      'docker image build [OPTIONS] <PATH | URL>',
+      'Replace <PATH | URL> with path of the Dockerfile.',
+      [
+        new CommandOption(
+          '-f, --file <string>',
+          'Name of the Dockerfile (Default is \'PATH/Dockerfile\')',
+        ),
+        new CommandOption(
+          '-q, --quiet',
+          'Suppress the build output and print image ID on success',
+        ),
+      ],
+    ),
+    new Command(
+      'history',
+      'Show the history of an image',
+      'docker image history [OPTIONS] <IMAGE>',
+      'Replace <IMAGE> with the name of the image and tag.',
+      [
+        new CommandOption(
+          '-H, --human',
+          'Print sizes and dates in human readable format (default true)',
+        ),
+        new CommandOption(
+          '-q, --quiet',
+          'Only show numeric IDs',
+        ),
+      ],
+    ),
+    new Command(
+      'import',
+      'Import the contents from a tarball to create a filesystem image',
+      'docker image import [OPTIONS] <file|URL|- REPOSITORY[:TAG]>',
+      'Replace <file|URL|- REPOSITORY[:TAG]> with the name of the file.',
+      [
+        new CommandOption(
+          '-c, --change list',
+          'Apply Dockerfile instruction to the created image',
+        ),
+        new CommandOption(
+          '-m, --message <string>',
+          'Set commit message for imported image',
+        ),
+      ],
+    ),
+    new Command(
+      'inspect',
+      'Display detailed information on one or more images',
+      'docker image inspect [OPTIONS] IMAGE [IMAGE...]',
+      '',
+      [
+        new CommandOption(
+          '-f, --format string',
+          'Format the output using the given Go template'
+        ),
+      ],
+    ),
+    new Command(
+      'load',
+      'Load an image from a tar archive or STDIN',
+      'docker image load [OPTIONS]',
+      '',
+      [
+        new CommandOption(
+          '-i, --input string',
+          'Read from tar archive file, instead of STDIN',
+        ),
+        new CommandOption(
+          '-q, --quiet',
+          'Suppress the load output',
+        ),
+      ],
+    ),
+    new Command(
+      'ls',
+      'List images',
+      'docker image ls [OPTIONS] <REPOSITORY[:TAG]>',
+      'Replace <REPOSITORY[:TAG]> with the name.',
+      [
+        new CommandOption(
+          '-a, --all',
+          'Show all images (default hides intermediate images)',
+        ),
+        new CommandOption(
+          '-q, --quiet',
+          'Only show numeric IDs',
+        ),
+      ],
+    ),
+    new Command(
+      'prune',
+      'Remove unused images',
+      'docker image prune [OPTIONS]',
+      '',
+      [
+        new CommandOption(
+          '-a, --all',
+          'Remove all unused images, not just dangling one',
+        ),
+        new CommandOption(
+          '-f, --force',
+          'Do not prompt for confirmation',
+        ),
+      ],
+    ),
+    new Command(
+      'pull',
+      'Pull an image or a repository to a registry',
+      'docker image pull [OPTIONS] <NAME[:TAG|@DIGEST]>',
+      'Replace <NAME[:TAG|@DIGEST] with the name of the image.',
+      [
+        new CommandOption(
+          '-a, --all-tags',
+          'Download all tagged images in the repository',
+        ),
+        new CommandOption(
+          '-q, --quiet',
+          'Suppress verbose output',
+        ),
+      ],
+    ),
+    new Command(
+      'push',
+      'Push an image or a repository to a registry',
+      'docker image push [OPTIONS] <NAME[:TAG]>',
+      'Replace <NAME[:TAG] with the name of the image.',
+      [
+        new CommandOption(
+          '--disable-content-trust',
+          'Skip image signing (default true)',
+        ),
+      ],
+    ),
+    new Command(
+      'rm',
+      'Remove one or more images',
+      'docker image rm [OPTIONS] IMAGE [IMAGE...]',
+      '',
+      [
+        new CommandOption(
+          '-f, --force',
+          'Force removal of the image',
+        ),
+      ],
+    ),
+    new Command(
+      'save',
+      'Save one or more images to a tar archive',
+      'docker image save [OPTIONS] IMAGE [IMAGE...]',
+      '',
+      [
+        new CommandOption(
+          '-o, --output string',
+          'Write to a file, instead of STDOUT',
+        ),
+      ],
+    ),
+    new Command(
+      'tag',
+      'Create a tag TARGET_IMAGE that refers to SOURCE_IMAGE',
+      'docker image tag <SOURCE_IMAGE[:TAG]> <TARGET_IMAGE[:TAG]>',
+      'Replace <SOURCE_IMAGE[:TAG]> with the original image and <TARGAT_IMAGE[:TAG]> with the destination image.',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+  ],
+  network: [
+    new Command(
+      'connect',
+      'Connect a container to a network',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'create',
+      'Create a network',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'disconnect',
+      'Disconnect a container from a network',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'inspect',
+      'Dos[;ay detailed information on one or more networks',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'ls',
+      'List networks',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'prune',
+      'Remove all unused networks',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'rm',
+      'Remove one or more networks',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+  ],
+  'node': [
+    new Command(
+      'demote',
+      'Demote one or more nodes from manager in the swarm',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'inspect',
+      'Display detailed information on one or more nodes',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'ls',
+      'List nodes in the swarm',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'promote',
+      'Promote one or more nodes to manager in the swarm',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'ps',
+      'List tasks running on one or more nodes, defaults to current node',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'rm',
+      'Remove one or more nodes from the swarm',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'update',
+      'Update a node',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+  ],
+  'plugin': [
+    new Command(
+      'create',
+      'Create a plugin from a rootfs and configuration. Plugin data directory must contain config.json and rootfs directory',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'disable',
+      'Disable a plugin',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'enable',
+      'Enable a plugin',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'inspect',
+      'Display detailed information on one or more plugins',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'install',
+      'Install a plugin',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'ls',
+      'List plugins',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'push',
+      'Push a plugin to a registry',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'rm',
+      'Remove one or more plugins',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'set',
+      'Change settings for a plugin',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'upgrade',
+      'Upgrade an existing plugin',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+  ],
+  'secret': [
+    new Command(
+      'create',
+      'Create a secret from a file or STDIN as content',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'inspect',
+      'Display detailed information on one or more secrets',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'ls',
+      'List secrets',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'rm',
+      'Remove one or more secrets',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+  ],
+  'service': [
+    new Command(
+      'create',
+      'Create a new service',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'inspect',
+      'Display detailed information on one or more services',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'logs',
+      'Fetch the logs of a service or task',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'ls',
+      'List services',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'ps',
+      'List the tasks of one or more services',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'rm',
+      'Remove one or more services',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'rollback',
+      'Revert changes to a service\'s configuration',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'scale',
+      'Scale one or multiple replicated services',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'update',
+      'Update a service',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+  ],
+  'stack': [
+    new Command(
+      'deploy',
+      'Deploy a new stack or update an existing stack',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'ls',
+      'List stacks',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'ps',
+      'List the tasks in the stack',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'rm',
+      'Remove one or more stacks',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'services',
+      'List the services in the stack',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+  ],
+  'swarm': [
+    new Command(
+      'ca',
+      'Display and rotate the root CA',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'intialize',
+      'Initialize a swarm',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'token',
+      'Join a swarm as a node and/or manager',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'join-token',
+      'Manage join tokens',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'leave',
+      'Leave the swarm',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'unlock',
+      'Unlock swarm',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'unlock-key',
+      'Manage the unlock key',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'update',
+      'Update the swarm',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+  ],
   'system': [
     new Command(
       'df',
