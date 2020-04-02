@@ -6,7 +6,6 @@ import { Grid, Cell } from 'baseui/layout-grid';
 import { Select, Value, Option } from 'baseui/select';
 import { Footer, Nav, Typer } from './components/index';
 import { primary, secondary } from './data/index';
-import './App.css';
 
 const engine = new Styletron();
 
@@ -22,22 +21,32 @@ function App() {
   const [comment, setComment] = React.useState<string>();
   const [options, setOptions] = React.useState<string>();
 
+  React.useEffect(() => {
+    console.log(firstValue);
+  }, [firstValue]);
+
+  React.useEffect(() => {
+    console.log(secondValue)
+  }, [secondValue]);
+
   const onFirstChange = (option: Option|undefined): void => {
     if (option === undefined || option === null) {
       return;
     }
+    setSecondOptionVisibility(false);
+    setSecondOption(null);
+    setSecondValue(undefined);
+    setThirdOptionVisibility(false);
+    setThirdOption(null);
+    setThirdValue(undefined);
+    setUsage('');
+    setComment('');
+    setOptions('');
     let options = secondary[option.value];
     if (options === undefined
         || options.length < 1) {
       setSecondOptionVisibility(false);
-      setSecondOption([]);
-      setSecondValue(undefined);
-      setThirdOptionVisibility(false);
-      setThirdOption([]);
-      setThirdValue(undefined);
-      setUsage(undefined);
-      setComment(undefined);
-      setOptions(undefined);
+      setSecondOption(null);
     } else {
       setSecondOptionVisibility(true);
       setSecondOption(options);
@@ -45,6 +54,9 @@ function App() {
   };
 
   const onSecondChange = (option: Option|undefined): void => {
+    setUsage('');
+    setComment('');
+    setOptions('');
     if (option === undefined || option === null) {
       return;
     }
@@ -58,6 +70,8 @@ function App() {
         }
         setOptions(result);
       }
+      setThirdOptionVisibility(false);
+      setThirdOption(null);
       // this.setState({ nb: '', usage: '' }, () => {
       //   this.setState({
       //     secondOption: selectedOption,
@@ -151,8 +165,8 @@ function App() {
                   </div>
                 </Cell>
                 <Cell span={[12, 8, 7]}>
-                  <h2 className="board__title  dark-white">Usage</h2>
-                  <div className="board board--1">
+                  <h2>Usage</h2>
+                  <div className="console">
                     <pre>
                       <Typer message={[usage || '']} />
                     </pre>
@@ -160,8 +174,8 @@ function App() {
                   { comment === undefined || comment.length < 1 ?
                     null
                     : <>
-                      <h2 className="board__title  dark-white">Comments</h2>
-                      <div className="board board--1">
+                      <h2>Comments</h2>
+                      <div className="console">
                         <pre>
                           <Typer message={[comment || '']} />
                         </pre>
@@ -172,7 +186,7 @@ function App() {
                     null
                     : <>
                       <h2>Options</h2>
-                      <div>
+                      <div className="console">
                         <pre>
                           <Typer message={[options || '']} ></Typer>
                         </pre>
