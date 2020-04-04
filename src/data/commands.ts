@@ -89,9 +89,308 @@ export const secondaryOptions: Record<string, Array<Command>> = {
       [],
     ),
   ],
-  // container: [
-    
-  // ],
+  'container': [
+    new Command(
+      'attach',
+      'Attach local standard input, output, and error streams to a running container',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'commit',
+      'Create a new image from a container\'s changes',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'cp',
+      'Copy files/folders between a container and the local filesystem',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'create',
+      'Create a new container',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'diff',
+      'Inspect changes to files or directories on a container\'s filesystem',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'exec',
+      'Run a command in a running container',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'export',
+      'Export a container\'s filesystem as a tar archive',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'inspect',
+      'Display detailed information on one or more containers',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'kill',
+      'Kill one or more running containers',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'logs',
+      'Fetch the logs of a container',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'ls',
+      'ist containers',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'pause',
+      'Pause all processes within one or more containers',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'port',
+      'List port mappings or a specific mapping for the container',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'prune',
+      'Remove all stopped containers',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'rename',
+      'Rename a container',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'restart',
+      'Restart one or more containers',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'rm',
+      'Remove one or more containers',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'run',
+      'Run a command in a new container',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'start',
+      'Start one or more stopped containers',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'stats',
+      'Display a live stream of container(s) resource usage statistics',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'stop',
+      'Stop one or more running containers',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'top',
+      'Display the running processes of a container',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'unpause',
+      'Unpause all processes within one or more containers',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'update',
+      'Update configuration of one or more containers',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+    new Command(
+      'wait',
+      'Block until one or more containers stop, then print their exit codes',
+      '',
+      '',
+      [
+        new CommandOption(
+          '',
+          '',
+        ),
+      ],
+    ),
+  ],
   'context': [
     new Command(
       'create',
@@ -190,7 +489,7 @@ export const secondaryOptions: Record<string, Array<Command>> = {
       ],
     ),
   ],
-  image: [
+  'image': [
     new Command(
       'build',
       'Build an image from a Dockerfile',
@@ -364,7 +663,7 @@ export const secondaryOptions: Record<string, Array<Command>> = {
       ],
     ),
   ],
-  network: [
+  'network': [
     new Command(
       'connect',
       'Connect a container to a network',
@@ -982,48 +1281,52 @@ export const secondaryOptions: Record<string, Array<Command>> = {
     new Command(
       'df',
       'Show docker disk usage',
-      '',
+      'docker system df [OPTIONS]',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '-v, --verbose',
+          'Show detailed information on space usage',
         ),
       ],
     ),
     new Command(
       'events',
       'Get real time events from the server',
-      '',
+      'docker system events [OPTIONS]',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '-f, --filter filter',
+          'Filter output based on conditions provided',
         ),
       ],
     ),
     new Command(
       'info',
       'Display system-wide information',
-      '',
+      'docker system info [OPTIONS]',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '-f, --format string',
+          'Format the output using the given Go template',
         ),
       ],
     ),
     new Command(
       'prune',
       'Remove unused data',
-      '',
+      'docker system prune [OPTIONS]',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '-a, --all',
+          'Remove all unused images not just dangling ones',
+        ),
+        new CommandOption(
+          '-f, --force',
+          'Do not prompt for confirmation',
         ),
       ],
     ),
@@ -1094,60 +1397,68 @@ export const secondaryOptions: Record<string, Array<Command>> = {
     new Command(
       'create',
       'Create a volume',
-      '',
+      'docker volume create [OPTIONS] [VOLUME]',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '-d, --driver string',
+          'Specify volume driver name (default "local")',
+        ),
+        new CommandOption(
+          '-o, --opt map',
+          'Set driver specific options (default map[])',
         ),
       ],
     ),
     new Command(
       'inspect',
       'Display detailed information on one or more volumes',
-      '',
+      'docker volume inspect [OPTIONS] VOLUME [VOLUME...]',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '-f, --format string',
+          'Format the output using the given Go template',
         ),
       ],
     ),
     new Command(
       'ls',
       'List volumes',
-      '',
+      'docker volume ls [OPTIONS]',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '-f, --filter filter',
+          'Provide filter values (e.g. \'dangling=true\')',
+        ),
+        new CommandOption(
+          '-q, --quiet',
+          'Only display volume names',
         ),
       ],
     ),
     new Command(
       'prune',
       'Remove all unused local volumes',
-      '',
+      'docker volume prune [OPTIONS]',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '-f, --force',
+          'Do not prompt for confirmation',
         ),
       ],
     ),
     new Command(
       'rm',
       'Remove one or more volumes',
-      '',
+      'docker volume rm [OPTIONS] VOLUME [VOLUME...]',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '-f, --force',
+          'Force the removal of one or more volumes',
         ),
       ],
     ),
