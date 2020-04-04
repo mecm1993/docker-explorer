@@ -3,105 +3,155 @@ import { Client as Styletron } from 'styletron-engine-atomic';
 import { Provider as StyletronProvider } from 'styletron-react';
 import { LightTheme, BaseProvider } from 'baseui';
 import { Grid, Cell } from 'baseui/layout-grid';
-import { Select, Value, Option } from 'baseui/select';
+import { Select } from 'baseui/select';
 import { Footer, Nav, Typer } from './components/index';
 import { primary, secondary } from './data/index';
+import { Command } from './models/Command';
+import { CommandOption } from './models/CommandOption';
 
 const engine = new Styletron();
 
 function App() {
-  const [firstValue, setFirstValue] = React.useState<Value>();
-  const [secondOptionVisibility, setSecondOptionVisibility] = React.useState<boolean>(false);
-  const [secondValue, setSecondValue] = React.useState<Value>();
-  const [secondOption, setSecondOption] = React.useState<any>();
-  const [thirdOptionVisibility, setThirdOptionVisibility] = React.useState<boolean>(false);
-  const [thirdValue, setThirdValue] = React.useState<Value>();
-  const [thirdOption, setThirdOption] = React.useState<any>();
-  const [usage, setUsage] = React.useState<string>();
-  const [comment, setComment] = React.useState<string>();
-  const [options, setOptions] = React.useState<string>();
+  const [first, setFirst] = React.useState({
+    prevValue: String(),
+    currentValue: String(),
+    selectedValue: undefined,
+    options: primary,
+  });
+  const [second, setSecond] = React.useState({
+    prevValue: String(),
+    currentValue: String(),
+    selectedValue: undefined,
+    options: Array<Command>(),
+    visible: false,
+  });
+  const [third, setThird] = React.useState({
+    prevValue: String(),
+    currentValue: String(),
+    selectedValue: undefined,
+    options: Array<any>(),
+    visible: false,
+  });
+  const [text, setText] = React.useState({
+    usage: String(),
+    comments: String(),
+    options: String(),
+    optionList: Array<CommandOption>(),
+  });
 
-  React.useEffect(() => {
-    console.log(firstValue);
-  }, [firstValue]);
-
-  React.useEffect(() => {
-    console.log(secondValue)
-  }, [secondValue]);
-
-  const onFirstChange = (option: Option|undefined): void => {
-    if (option === undefined || option === null) {
-      return;
-    }
-    setSecondOptionVisibility(false);
-    setSecondOption(null);
-    setSecondValue(undefined);
-    setThirdOptionVisibility(false);
-    setThirdOption(null);
-    setThirdValue(undefined);
-    setUsage('');
-    setComment('');
-    setOptions('');
-    let options = secondary[option.value];
-    if (options === undefined
-        || options.length < 1) {
-      setSecondOptionVisibility(false);
-      setSecondOption(null);
-    } else {
-      setSecondOptionVisibility(true);
-      setSecondOption(options);
-    }
-  };
-
-  const onSecondChange = (option: Option|undefined): void => {
-    setUsage('');
-    setComment('');
-    setOptions('');
-    if (option === undefined || option === null) {
-      return;
-    }
-    if (option.usage) {
-      setUsage(option.usage);
-      setComment(option.nb);
-      if (option.options) {
-        let result = '';
-        for(let { flag, message } of option.options) {
-          result += `${flag} ${message}\n`;
-        }
-        setOptions(result);
-      }
-      setThirdOptionVisibility(false);
-      setThirdOption(null);
-      // this.setState({ nb: '', usage: '' }, () => {
-      //   this.setState({
-      //     secondOption: selectedOption,
-      //     showThird: false,
-      //     nb: selectedOption.nb,
-      //     usage: selectedOption.usage,
-      //     thirdOption: null
-      //   });
-      // });
-    } else {
-      setUsage(undefined);
-      setComment(undefined);
-      setOptions(undefined);
-      setThirdOptionVisibility(true);
-      setThirdOption(null);
-      // this.setState({
-      //   secondOption: selectedOption,
-      //   showThird: true,
-      //   thirdOption: null,
-      //   nb: '',
-      //   usage: ''
-      // });
-    }
-  };
-
-  const onThirdChange = (option: Option|undefined): any => {
-    if (option === undefined || option === null) {
-      return;
-    }
+  const onFirstValueChange = (e: any) => {
+    setText({
+      usage: String(),
+      comments: String(),
+      options: String(),
+      optionList: Array<CommandOption>(),
+    });
+    setFirst({
+      prevValue: first.currentValue,
+      currentValue: e.option.value,
+      selectedValue: e.value,
+      options: first.options,
+    });
   }
+
+  const onSecondValueChange = (e: any) => {
+    setText({
+      usage: String(),
+      comments: String(),
+      options: String(),
+      optionList: Array<CommandOption>(),
+    });
+    setSecond({
+      prevValue: second.currentValue,
+      currentValue: e.option.value,
+      selectedValue: e.value,
+      options: second.options,
+      visible: true,
+    });
+  }
+
+  const onThirdValueChange = (e: any) => {
+    console.log('TBD');
+  }
+
+  React.useEffect(() => {
+    if (first.currentValue === undefined) {
+      return;
+    }
+    if (first.prevValue !== first.currentValue) {
+      setSecond({
+        prevValue: String(),
+        currentValue: String(),
+        selectedValue: undefined,
+        options: secondary[first.currentValue!],
+        visible: true,
+      });
+    }
+  }, [first]);
+
+  React.useEffect(() => {
+    if (second.selectedValue === undefined) {
+      return;
+    }
+
+    if (second.prevValue !== second.currentValue) {
+      setThird({
+        prevValue: String(),
+        currentValue: String(),
+        selectedValue: undefined,
+        options: [],
+        visible: false,
+      });
+
+      if (second.selectedValue![0]['usage'] === undefined) {
+        setThird({
+          prevValue: String(),
+          currentValue: String(),
+          selectedValue: undefined,
+          options: [],
+          visible: true,
+        });
+      } else {
+        setText({
+          usage: second.selectedValue![0]['usage'],
+          comments: String(),
+          options: String(),
+          optionList: Array<CommandOption>(),
+        });
+      }
+      
+      if (second.selectedValue![0]['nb'] !== undefined) {
+        setText({
+          usage: second.selectedValue![0]['usage'],
+          comments: second.selectedValue![0]['nb'],
+          options: String(),
+          optionList: Array<CommandOption>(),
+        });
+      }
+
+      if (second.selectedValue![0]['options'] !== undefined) {
+        const opts: Array<CommandOption> = second.selectedValue![0]['options'];
+        let result = '';
+        for (const option of opts) {
+          result += `${option.flag} ${option.message}\n`;
+        }
+        setText({
+          usage: second.selectedValue![0]['usage'],
+          comments: second.selectedValue![0]['nb'],
+          options: result,
+          optionList: opts,
+        });
+      }
+    } else {
+      setThird({
+        prevValue: String(),
+        currentValue: String(),
+        selectedValue: undefined,
+        options: [],
+        visible: false,
+      });
+    }
+  }, [second]);
 
   return (
     <StyletronProvider value={engine}>
@@ -122,44 +172,35 @@ function App() {
                     <h4 className="options__title">I want to:</h4>
                     <Select
                       clearable={false}
-                      options={primary}
+                      options={first.options}
                       labelKey="label"
                       valueKey="value"
-                      value={firstValue}
+                      value={first.selectedValue}
                       placeholder="..."
-                      onChange={({value, option}) => {
-                        setFirstValue(value);
-                        onFirstChange(option)
-                      }}
+                      onChange={(params) => onFirstValueChange(params) }
                     />
                     <br />
-                    {secondOptionVisibility ? (
+                    {second.visible ? (
                       <Select
                         clearable={false}
-                        options={secondOption}
+                        options={second.options}
                         labelKey="label"
                         valueKey="value"
-                        value={secondValue}
+                        value={second.selectedValue}
                         placeholder="..."
-                        onChange={({value, option}) => {
-                          setSecondValue(value);
-                          onSecondChange(option)
-                        }}
+                        onChange={(params) => onSecondValueChange(params) }
                       />
                     ) : null}
                     <br />
-                    {thirdOptionVisibility ? (
+                    {third.visible ? (
                       <Select
                         clearable={false}
-                        options={thirdOption}
+                        options={third.options}
                         labelKey="label"
                         valueKey="value"
-                        value={thirdValue}
+                        value={third.selectedValue}
                         placeholder="..."
-                        onChange={({value, option}) => {
-                          setThirdValue(value);
-                          onThirdChange(option)
-                        }}
+                        onChange={(params) => onThirdValueChange(params) }
                       />
                     ) : null}
                   </div>
@@ -168,27 +209,27 @@ function App() {
                   <h2>Usage</h2>
                   <div className="console">
                     <pre>
-                      <Typer message={[usage || '']} />
+                      <Typer message={[text.usage || '']} />
                     </pre>
                   </div>
-                  { comment === undefined || comment.length < 1 ?
+                  { text.comments.length < 1 ?
                     null
                     : <>
                       <h2>Comments</h2>
                       <div className="console">
                         <pre>
-                          <Typer message={[comment || '']} />
+                          <Typer message={[text.comments || '']} />
                         </pre>
                       </div>
                     </>
                   }
-                  { options === undefined || options.length < 1 ?
+                  { text.options.length < 1 ?
                     null
                     : <>
                       <h2>Options</h2>
                       <div className="console">
                         <pre>
-                          <Typer message={[options || '']} ></Typer>
+                          <Typer message={[text.options || '']} ></Typer>
                         </pre>
                       </div>
                     </>
