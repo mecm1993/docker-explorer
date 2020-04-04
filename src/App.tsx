@@ -4,6 +4,7 @@ import { Provider as StyletronProvider } from 'styletron-react';
 import { LightTheme, BaseProvider } from 'baseui';
 import { Grid, Cell } from 'baseui/layout-grid';
 import { Select } from 'baseui/select';
+import { SIZE } from 'baseui/input';
 import { Footer, Nav, Typer } from './components/index';
 import { primary, secondary } from './data/index';
 import { Command } from './models/Command';
@@ -171,6 +172,7 @@ function App() {
                   <div className="options">
                     <h4 className="options__title">I want to:</h4>
                     <Select
+                      size={SIZE.compact}
                       clearable={false}
                       options={first.options}
                       labelKey="label"
@@ -182,6 +184,7 @@ function App() {
                     <br />
                     {second.visible ? (
                       <Select
+                        size={SIZE.compact}
                         clearable={false}
                         options={second.options}
                         labelKey="label"
@@ -194,6 +197,7 @@ function App() {
                     <br />
                     {third.visible ? (
                       <Select
+                        size={SIZE.compact}
                         clearable={false}
                         options={third.options}
                         labelKey="label"
