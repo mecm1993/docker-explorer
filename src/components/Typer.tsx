@@ -25,7 +25,7 @@ const Typer = ({ message }: TyperProps) => {
     return () => clearTimeout(timer);
   })
 
-  return <span>{text}</span>
+  return <div className="typer">{text}</div>
 }
 
 export default Typer;
