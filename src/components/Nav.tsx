@@ -3,18 +3,17 @@ import {
   HeaderNavigation,
   ALIGN,
   StyledNavigationList,
-  StyledNavigationItem
 } from 'baseui/header-navigation';
 
 function Nav() {
   return (
-    <HeaderNavigation>
-      <StyledNavigationList $align={ALIGN.left}>
-        <StyledNavigationItem>Docker Explorer</StyledNavigationItem>
-      </StyledNavigationList>
-      <StyledNavigationList $align={ALIGN.center} />
-      <StyledNavigationList $align={ALIGN.right} />
-    </HeaderNavigation>
+    <div className="nav">
+      <HeaderNavigation>
+        <StyledNavigationList $align={ALIGN.left} />
+        <StyledNavigationList $align={ALIGN.center} />
+        <StyledNavigationList $align={ALIGN.right} />
+      </HeaderNavigation>
+    </div>
   );
 }
 
