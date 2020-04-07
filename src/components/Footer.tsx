@@ -1,6 +1,8 @@
 import React from 'react';
-import {useStyletron} from 'baseui';
+import { useStyletron } from 'baseui';
 import { Grid, Cell } from 'baseui/layout-grid';
+import Github from '../assets/images/github.svg';
+import Twitter from '../assets/images/twitter.svg';
 
 function Footer() {
   return (
@@ -10,31 +12,28 @@ function Footer() {
           <Cell span={[12, 12, 12]}>
             <Inner>
               <p className="footer__content">
-                Made with <span>❤</span> by{' '}
-                <a href="https://manuelcepeda.dev" target="_blank" rel="noopener noreferrer">
-                  mecm1993
-                </a>
+                Made with <span role="img" aria-label="heart">❤️</span> from <span role="img" aria-label="palm-tree">🌴</span>
               </p>
             </Inner>
           </Cell>
           <Cell span={[12, 12, 12]}>
             <Inner>
-              <p>
-                <a
-                  href="https://twitter.com/mecm1993"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="footer__links"
-                >
-                  Twitter
-                </a>
+              <p className="footer__externals">
                 <a
                   href="https://github.com/mecm1993/dockerexplorer"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer__links"
                 >
-                  GitHub
+                  <img className="footer__icons" alt="Github" src={Github} />
+                </a>
+                <a
+                  href="https://twitter.com/mecm1993"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="footer__links"
+                >
+                  <img className="footer__icons" alt="Twitter" src={Twitter} />
                 </a>
               </p>
             </Inner>

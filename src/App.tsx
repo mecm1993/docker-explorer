@@ -215,9 +215,9 @@ function App() {
     <StyletronProvider value={engine}>
       <BaseProvider theme={LightTheme}>
         <div className="home">
-          <div className="container">
+          <div className="home__container">
             <Nav />
-            <div className="content">
+            <div className="home__content">
               <Grid>
                 <Cell span={[12, 4, 5]}>
                   <h2>
