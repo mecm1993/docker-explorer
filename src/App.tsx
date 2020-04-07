@@ -6,8 +6,9 @@ import { Grid, Cell } from 'baseui/layout-grid';
 import { Select } from 'baseui/select';
 import { SIZE } from 'baseui/input';
 import { Footer, Nav, Typer } from './components/index';
-import { primary, secondary } from './data/index';
+import { primary, secondary, tertiary } from './data/index';
 import { Command } from './models/Command';
+import { SubCommand } from './models/SubCommand';
 import { CommandOption } from './models/CommandOption';
 
 const engine = new Styletron();
@@ -30,7 +31,7 @@ function App() {
     prevValue: String(),
     currentValue: String(),
     selectedValue: undefined,
-    options: Array<any>(),
+    options: Array<SubCommand>(),
     visible: false,
   });
   const [text, setText] = React.useState({
@@ -72,7 +73,19 @@ function App() {
   }
 
   const onThirdValueChange = (e: any) => {
-    console.log('TBD');
+    setText({
+      usage: String(),
+      comments: String(),
+      options: String(),
+      optionList: Array<CommandOption>(),
+    });
+    setThird({
+      prevValue: third.currentValue,
+      currentValue: e.option.value,
+      selectedValue: e.value,
+      options: third.options,
+      visible: true,
+    });
   }
 
   React.useEffect(() => {
@@ -87,6 +100,13 @@ function App() {
         options: secondary[first.currentValue!],
         visible: true,
       });
+      setThird({
+        prevValue: String(),
+        currentValue: String(),
+        selectedValue: undefined,
+        options: Array<SubCommand>(),
+        visible: false,
+      });
     }
   }, [first]);
 
@@ -100,16 +120,16 @@ function App() {
         prevValue: String(),
         currentValue: String(),
         selectedValue: undefined,
-        options: [],
+        options: Array<SubCommand>(),
         visible: false,
       });
 
-      if (second.selectedValue![0]['usage'] === undefined) {
+      if (second.selectedValue![0]['usage'] === '') {
         setThird({
           prevValue: String(),
           currentValue: String(),
           selectedValue: undefined,
-          options: [],
+          options: tertiary[second.selectedValue![0]['value']],
           visible: true,
         });
       } else {
@@ -119,26 +139,63 @@ function App() {
           options: String(),
           optionList: Array<CommandOption>(),
         });
-      }
-      
-      if (second.selectedValue![0]['nb'] !== undefined) {
-        setText({
-          usage: second.selectedValue![0]['usage'],
-          comments: second.selectedValue![0]['nb'],
-          options: String(),
-          optionList: Array<CommandOption>(),
-        });
-      }
 
-      if (second.selectedValue![0]['options'] !== undefined) {
-        const opts: Array<CommandOption> = second.selectedValue![0]['options'];
+        if (second.selectedValue![0]['nb'] === '') {
+          setText({
+            usage: second.selectedValue![0]['usage'],
+            comments: second.selectedValue![0]['nb'],
+            options: String(),
+            optionList: Array<CommandOption>(),
+          });
+        }
+  
+        if (second.selectedValue![0]['options'] !== undefined) {
+          const opts: Array<CommandOption> = second.selectedValue![0]['options'];
+          let result = '';
+          for (const option of opts) {
+            result += `${option.flag} ${option.message}\n`;
+          }
+          setText({
+            usage: second.selectedValue![0]['usage'],
+            comments: second.selectedValue![0]['nb'],
+            options: result,
+            optionList: opts,
+          });
+        }
+      }
+    } else {
+      setThird({
+        prevValue: String(),
+        currentValue: String(),
+        selectedValue: undefined,
+        options: Array<SubCommand>(),
+        visible: false,
+      });
+    }
+  }, [second]);
+
+  React.useEffect(() => {
+    if (third.selectedValue === undefined) {
+      return;
+    }
+
+    if (third.prevValue !== third.currentValue) {
+      setText({
+        usage: third.selectedValue![0]['usage'],
+        comments: String(),
+        options: String(),
+        optionList: Array<CommandOption>(),
+      });
+
+      if (third.selectedValue![0]['options'] !== undefined) {
+        const opts: Array<CommandOption> = third.selectedValue![0]['options'];
         let result = '';
         for (const option of opts) {
           result += `${option.flag} ${option.message}\n`;
         }
         setText({
-          usage: second.selectedValue![0]['usage'],
-          comments: second.selectedValue![0]['nb'],
+          usage: third.selectedValue![0]['usage'],
+          comments: String(),
           options: result,
           optionList: opts,
         });
@@ -148,11 +205,11 @@ function App() {
         prevValue: String(),
         currentValue: String(),
         selectedValue: undefined,
-        options: [],
+        options: Array<SubCommand>(),
         visible: false,
       });
     }
-  }, [second]);
+}, [third]);
 
   return (
     <StyletronProvider value={engine}>
@@ -163,14 +220,14 @@ function App() {
             <div className="content">
               <Grid>
                 <Cell span={[12, 4, 5]}>
-                  <h2 className="content__title  dark-white">
+                  <h2>
                     Docker <span>Command</span> Explorer
                   </h2>
-                  <p className="content__subtitle dark-grey">
-                    Find the right commands you need without digging through the web.
+                  <p>
+                    Get the commands with no need to search on the web.
                   </p>
-                  <div className="options">
-                    <h4 className="options__title">I want to:</h4>
+                  <div>
+                    <h4>I want to:</h4>
                     <Select
                       size={SIZE.compact}
                       clearable={false}
