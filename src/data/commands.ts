@@ -503,31 +503,39 @@ export const secondaryOptions: Record<string, Array<Command>> = {
     new Command(
       'create',
       'Create a context',
-      '',
+      'docker context create [OPTIONS] CONTEXT',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '--default-stack-orchestrator string',
+          'Default orchestrator for stack operations to use with this context (swarm|kubernetes|all)',
+        ),
+        new CommandOption(
+          '--description string',
+          'Description of the context',
+        ),
+        new CommandOption(
+          '--docker stringToString',
+          'set the docker endpoint (default [])',
         ),
       ],
     ),
     new Command(
       'export',
       'Export a context to a tar or kubeconfig file',
-      '',
+      'docker context export [OPTIONS] CONTEXT [FILE|-]',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '--kubeconfig',
+          'Export as a kubeconfig file',
         ),
       ],
     ),
     new Command(
       'import',
       'Import a context from a tar or zip file',
-      '',
+      'docker context import CONTEXT FILE|-',
       '',
       [
         new CommandOption(
@@ -539,55 +547,67 @@ export const secondaryOptions: Record<string, Array<Command>> = {
     new Command(
       'inspect',
       'Display detailed information on one or more contexts',
-      '',
+      'docker context inspect [OPTIONS] [CONTEXT] [CONTEXT...]',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '-f, --format string',
+          'Format the output using the given Go template',
         ),
       ],
     ),
     new Command(
       'ls',
       'List contexts',
-      '',
+      'docker context ls [OPTIONS]',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '--format string',
+          'Pretty-print contexts using a Go template',
+        ),
+        new CommandOption(
+          '-q, --quiet',
+          'Only show context names',
         ),
       ],
     ),
     new Command(
       'rm',
       'Remove one or more contexts',
-      '',
+      'docker context rm CONTEXT [CONTEXT...]',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '-f, --force',
+          'Force the removal of a context in use',
         ),
       ],
     ),
     new Command(
       'update',
       'Update a context',
-      '',
+      'docker context update [OPTIONS] CONTEXT',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '--default-stack-orchestrator string',
+          'Default orchestrator for stack operations to use with this context (swarm|kubernetes|all)',
+        ),
+        new CommandOption(
+          '--description string',
+          'Description of the context',
+        ),
+        new CommandOption(
+          '--docker stringToString',
+          'set the docker endpoint (default [])',
         ),
       ],
     ),
     new Command(
       'use',
       'Set the current docker context',
-      '',
+      'docker context use CONTEXT',
       '',
       [
         new CommandOption(
@@ -1623,36 +1643,36 @@ export const secondaryOptions: Record<string, Array<Command>> = {
     new Command(
       'inspect',
       'Return low-level information about keys and signatures',
-      '',
+      'docker trust inspect IMAGE[:TAG] [IMAGE[:TAG]...]',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '--pretty',
+          'Print the information in a human friendly format',
         ),
       ],
     ),
     new Command(
       'revoke',
       'Remove trust for an image',
-      '',
+      'docker trust revoke [OPTIONS] IMAGE[:TAG]',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '-y, --yes',
+          'Do not prompt for confirmation',
         ),
       ],
     ),
     new Command(
       'sign',
       'Sign an image',
-      '',
+      'docker trust sign IMAGE:TAG',
       '',
       [
         new CommandOption(
-          '',
-          '',
+          '--local',
+          'Sign a locally tagged image',
         ),
       ],
     ),
