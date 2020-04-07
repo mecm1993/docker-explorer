@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 interface TyperProps {
-    message: string[]
+  message: string[]
 }
 
 const Typer = ({ message }: TyperProps) => {
-  const [text, setText] = useState('');
-  const [speed, setSpeed] = useState(150);
-  const [loop, setLoop] = useState(0);
+  const [text, setText] = React.useState('');
+  const [speed, setSpeed] = React.useState(150);
+  const [loop, setLoop] = React.useState(0);
 
   const i: number = loop % message.length;
   const fullText: string = message[i];
@@ -18,12 +18,12 @@ const Typer = ({ message }: TyperProps) => {
     setLoop(loop + 1);
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     const timer = setTimeout(() => {
       handleTyping();
     }, speed);
     return () => clearTimeout(timer);
-  })
+  });
 
   return <div className="typer">{text}</div>
 }
