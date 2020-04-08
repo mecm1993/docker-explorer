@@ -9062,11 +9062,6 @@ react-scripts@3.4.0:
   optionalDependencies:
     fsevents "2.1.2"
 
-react-typewriter-hook@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-typewriter-hook/-/react-typewriter-hook-1.0.1.tgz#f16d7ce6fb2b5b131c345bf38ad34ccc6d69b8d3"
-  integrity sha512-XOBBkI1fuZRH5OBpJ9qZuXxMZ1T8EgU2VsbKwR+2mvA5rMVjMtbTg2iRNFxpiYY3ClNQ5fBegAaCqRLsNNsvfg==
-
 react-virtualized-auto-sizer@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/react-virtualized-auto-sizer/-/react-virtualized-auto-sizer-1.0.2.tgz#a61dd4f756458bbf63bd895a92379f9b70f803bd"
@@ -10802,11 +10797,6 @@ use-callback-ref@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/use-callback-ref/-/use-callback-ref-1.2.1.tgz#898759ccb9e14be6c7a860abafa3ffbd826c89bb"
   integrity sha512-C3nvxh0ZpaOxs9RCnWwAJ+7bJPwQI8LHF71LzbQ3BvzH5XkdtlkMadqElGevg5bYBDFip4sAnD4m06zAKebg1w==
-
-use-select@^0.0.4:
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/use-select/-/use-select-0.0.4.tgz#640b945c6e4911464478b428ba80f0b71c0346d8"
-  integrity sha512-xXRYz9mw266JxxJDv6YymedATeT86APdfXt10pbWGy/ZczI/yszjNMRIkRoEWa1iUNRvFvyh8rl9/qGwVOqBlw==
 
 use-sidecar@^1.0.1:
   version "1.0.2"
