@@ -1,19 +1,19 @@
 const commands = [
-  { value: 'builder', label: 'Manage builds' },
-  { value: 'config', label: 'Manage Docker configs' },
-  { value: 'container', label: 'Manage containers' },
-  { value: 'context', label: 'Manage contexts' },
-  { value: 'image', label: 'Manage images' },
-  { value: 'network', label: 'Manage networks' },
-  { value: 'node', label: 'Manage Swarm nodes' },
-  { value: 'plugin', label: 'Mange plugins' },
-  { value: 'secret', label: 'Manage Docker secrets' },
-  { value: 'service', label: 'Manage services' },
-  { value: 'stack', label: 'Manage Docker stacks' },
-  { value: 'swarm', label: 'Manage Swarm' },
-  { value: 'system', label: 'Manage Docker' },
-  { value: 'trust', label: 'Manage trust on Docker images' },
-  { value: 'volume', label: 'Manage volumes' }
+  { value: 'builder', label: 'Builds' },
+  { value: 'config', label: 'Docker configs' },
+  { value: 'container', label: 'Containers' },
+  { value: 'context', label: 'Contexts' },
+  { value: 'image', label: 'Images' },
+  { value: 'network', label: 'Networks' },
+  { value: 'node', label: 'Swarm nodes' },
+  { value: 'plugin', label: 'Plugins' },
+  { value: 'secret', label: 'Docker secrets' },
+  { value: 'service', label: 'Services' },
+  { value: 'stack', label: 'Docker stacks' },
+  { value: 'swarm', label: 'Swarm' },
+  { value: 'system', label: 'Docker' },
+  { value: 'trust', label: 'Trust on Docker images' },
+  { value: 'volume', label: 'Volumes' }
 ];
 
 export const primaryOptions = commands.sort((x, y) => {

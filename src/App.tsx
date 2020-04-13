@@ -227,7 +227,7 @@ function App() {
                     Get the commands with no need to search on the web.
                   </p>
                   <div>
-                    <h4>I want to:</h4>
+                    <h4>I want to manage:</h4>
                     <Select
                       size={SIZE.compact}
                       clearable={false}
