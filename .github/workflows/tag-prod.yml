@@ -2,8 +2,8 @@ name: PROD Tag
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - 'v*'
 jobs:
   release:
     runs-on: ubuntu-latest
