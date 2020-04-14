@@ -8,29 +8,54 @@
 
  - [Node](https://nodejs.org/en/)
  - [Yarn](https://yarnpkg.com/)
+ - [Docker](https://www.docker.com/)
 
 ### Installation
 
 Clone the project
 
-```
+```bash
 git clone https://github.com/mecm1993/docker-explorer.git
 ```
 
+#### Node & Yarn
+
 Install the dependencies
 
-```
+```bash
 cd docker-explorer
 yarn install
 ```
 
 Make sure everything is working
 
-```
+```bash
 yarn start
 ```
 
-If everything works as expected, it should open a new tab on `https://localhost:3000`.
+#### Docker
+
+Create the image
+
+```bash
+cd docker-explorer
+docker build -t dockerexplorer --rm .
+```
+
+Run the image
+
+```bash 
+docker run --itd --rm -p 3000:80 --name dockerexplorer-web dockerexplorer
+```
+
+#### Docker-Compose
+
+```bash
+cd docker-explorer
+docker-compose up -d --build
+```
+
+Note: If everything works as expected, it should be at `https://localhost:3000`.
 
 ### Code Style
 
@@ -58,4 +83,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-This project was inspired by [GitExplorer](https://github.com/summitech/gitexplorer) which is an awesome way to learn about Git.
+This project was inspired by [GitExplorer](https://github.com/summitech/gitexplorer) from [Summitech](https://summitech.ng/) which is an awesome way to learn about Git.

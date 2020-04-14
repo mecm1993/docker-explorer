@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  dockerexplorer:
+    container_name: dockerexplorer-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:80'
