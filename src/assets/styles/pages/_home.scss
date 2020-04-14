@@ -24,6 +24,33 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            .copy {
+                &__container {
+                    display: flex;
+                    align-items: center;
+                }
+
+                &__btn {
+                    padding: 5px;
+                    border-radius: 5px;
+                    font-weight: 700;
+                    background-color: #EEEEEE;
+                    border-color: #9A9A9A;
+
+                    &:hover {
+                        background-color: #CACACA;
+                        border-color: #FFEFEF;
+                    }
+                }
+
+                &__message {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    height: 2em;
+                    width: 100%;
+                }
+            }
             .typer {
                 color: #fff;
                 white-space: pre-wrap;
