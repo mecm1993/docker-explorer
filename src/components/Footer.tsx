@@ -20,7 +20,7 @@ function Footer() {
             <Inner>
               <p className="footer__externals">
                 <a
-                  href="https://github.com/mecm1993/dockerexplorer"
+                  href="https://github.com/mecm1993/docker-explorer"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="footer__links"
