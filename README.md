@@ -1,6 +1,6 @@
 <img alt="docker-explorer-logo" src="https://dockerexplorer.now.sh/logo512.png" width="40" /> **Docker Explorer**
 
-![PROD Deployment](https://github.com/mecm1993/docker-explorer/workflows/PROD%20Deployment/badge.svg)
+![PROD Deployment](https://github.com/mecm1993/docker-explorer/workflows/PROD%20Deployment/badge.svg?branch=master)
 
 ## Getting Started
 
