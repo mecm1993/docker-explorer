@@ -40,6 +40,9 @@ function App() {
     options: String(),
     optionList: Array<CommandOption>(),
   });
+  const [copy, setCopy] = React.useState({
+    text: String(),
+  });
 
   const onFirstValueChange = (e: any) => {
     setText({
@@ -85,6 +88,18 @@ function App() {
       selectedValue: e.value,
       options: third.options,
       visible: true,
+    });
+  }
+
+  const onCopyPress = () => {
+    const textField = document.createElement('textarea');
+    textField.innerText = text.usage;
+    document.body.appendChild(textField);
+    textField.select();
+    document.execCommand('copy');
+    textField.remove()
+    setCopy({
+      text: 'Successfully Copied',
     });
   }
 
@@ -272,6 +287,14 @@ function App() {
                     <pre>
                       <Typer message={[text.usage || '']} />
                     </pre>
+                    {
+                      document.queryCommandSupported('copy') &&
+                      text.usage.length > 0 &&
+                      <div className="copy__container">
+                        <button className="copy__btn" onClick={() => onCopyPress()}>Copy</button>
+                        <span className="copy__message">{copy.text}</span>
+                      </div>
+                    }
                   </div>
                   { text.comments.length < 1 ?
                     null
