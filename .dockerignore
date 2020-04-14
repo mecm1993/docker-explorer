@@ -1,0 +1,11 @@
+node_modules
+.now
+.github
+.eslintrc
+LICENSE
+Dockerfile
+
+*.md
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

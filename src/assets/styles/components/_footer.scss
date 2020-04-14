@@ -1,0 +1,33 @@
+.footer {
+  width: 100%;
+  margin-top: 2rem;
+  background: #CCC;
+
+  &__content {
+    margin-block-end: 0 !important;
+  }
+
+  &__externals {
+    margin-block-start: 0 !important;
+  }
+
+  &__content > a {
+    text-decoration: none;
+  }
+
+  &__links {
+    padding: 0.5rem;
+    position: relative;
+    text-decoration: none;
+  }
+
+  &__icons {
+    border-radius: 5px;
+    height: 30px;
+    width: 30px;
+
+    &:hover {
+      //
+    }
+  }
+}
