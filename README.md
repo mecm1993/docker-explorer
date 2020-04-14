@@ -1,6 +1,6 @@
-# DockerExplorer
+<img alt="docker-explorer-logo" src="https://dockerexplorer.now.sh/logo512.png" width="40" /> **Docker Explorer**
 
-![Deploy Development Website](https://github.com/mecm1993/docker-explorer/workflows/Deploy%20development%20website/badge.svg)
+![PROD Deployment](https://github.com/mecm1993/docker-explorer/workflows/PROD%20Deployment/badge.svg)
 
 ## Getting Started
 
@@ -18,7 +18,7 @@ Clone the project
 git clone https://github.com/mecm1993/docker-explorer.git
 ```
 
-#### Node & Yarn
+#### Yarn
 
 Install the dependencies
 
