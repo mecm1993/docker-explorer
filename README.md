@@ -67,7 +67,7 @@ yarn lint
 
 ## Deployment
 
-It deploys automatically to [Zeit Now](https://zeit.co/home) when changes are pushed to the brances `develop` and `master`.
+It deploys automatically to [Zeit Now](https://zeit.co/home) when changes are pushed to the branches `develop` and `master`.
 
 ## Built With
 
