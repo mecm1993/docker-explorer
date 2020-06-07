@@ -41,7 +41,7 @@ function App() {
     optionList: Array<CommandOption>(),
   });
   const [copy, setCopy] = React.useState({
-    text: String(),
+    text: String('Copy'),
   });
 
   const onFirstValueChange = (e: any) => {
@@ -97,10 +97,15 @@ function App() {
     document.body.appendChild(textField);
     textField.select();
     document.execCommand('copy');
-    textField.remove()
+    textField.remove();
     setCopy({
-      text: 'Successfully Copied',
+      text: 'Copied',
     });
+    setTimeout(() => {
+      setCopy({
+        text: 'Copy',
+      });
+    }, 1000);
   }
 
   React.useEffect(() => {
@@ -285,14 +290,13 @@ function App() {
                   <h2>Usage</h2>
                   <div className="console">
                     <pre>
-                      <Typer message={[text.usage || '']} />
+                      <Typer message={text.usage} />
                     </pre>
                     {
                       document.queryCommandSupported('copy') &&
                       text.usage.length > 0 &&
                       <div className="copy__container">
-                        <button className="copy__btn" onClick={() => onCopyPress()}>Copy</button>
-                        <span className="copy__message">{copy.text}</span>
+                        <button className="copy__btn" onClick={() => onCopyPress()}>{copy.text}</button>
                       </div>
                     }
                   </div>
@@ -302,7 +306,7 @@ function App() {
                       <h2>Comments</h2>
                       <div className="console">
                         <pre>
-                          <Typer message={[text.comments || '']} />
+                          <Typer message={text.comments} />
                         </pre>
                       </div>
                     </>
@@ -313,7 +317,7 @@ function App() {
                       <h2>Options</h2>
                       <div className="console">
                         <pre>
-                          <Typer message={[text.options || '']} ></Typer>
+                          <Typer message={text.options} ></Typer>
                         </pre>
                       </div>
                     </>
