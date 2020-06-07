@@ -1,31 +1,28 @@
 import React from 'react';
 
 interface TyperProps {
-  message: string[]
+  message: string
 }
 
 const Typer = ({ message }: TyperProps) => {
   const [text, setText] = React.useState('');
-  const [speed, setSpeed] = React.useState(150);
-  const [loop, setLoop] = React.useState(0);
-
-  const i: number = loop % message.length;
-  const fullText: string = message[i];
-
-  const handleTyping = () => {
-    setText(fullText.substring(0, text.length + 1));
-    setSpeed(30);
-    setLoop(loop + 1);
-  }
+  const speed: number = 20;
 
   React.useEffect(() => {
     const timer = setTimeout(() => {
-      handleTyping();
+      handleTyping(setText, message, text, speed);
     }, speed);
     return () => clearTimeout(timer);
-  });
+  }, [text, message]);
 
   return <div className="typer">{text}</div>
+}
+
+const handleTyping = (setText: Function, message: string, text: string, speed: number) => {
+  const timer = setTimeout(() => {
+    setText(message.substring(0, text.length + 1));
+  }, speed);
+  return () => clearTimeout(timer);
 }
 
 export default Typer;
